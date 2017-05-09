@@ -144,7 +144,7 @@ function getReqResProviders(req: Request, res: Response): Provider[] {
 }
 
 /**
- * Get the document at the file path. By default cache is used.
+ * Get the document at the file path. By default cache is not used.
  */
 function getDocument(filePath: string, useCache?: boolean): string {
 	if(useCache)
