@@ -22,6 +22,7 @@ export interface NgSetupOptions {
 export interface RenderOptions extends NgSetupOptions {
   req: Request;
   res?: Response;
+  cache?: boolean;
 }
 
 /**
@@ -68,7 +69,7 @@ export function ngExpressEngine(setupOptions: NgSetupOptions) {
           {
             provide: INITIAL_CONFIG,
             useValue: {
-              document: getDocument(filePath),
+              document: getDocument(filePath, options.cache),
               url: options.req.originalUrl
             }
           }
@@ -143,8 +144,11 @@ function getReqResProviders(req: Request, res: Response): Provider[] {
 }
 
 /**
- * Get the document at the file path
+ * Get the document at the file path. By default cache is used.
  */
-function getDocument(filePath: string): string {
-  return templateCache[filePath] = templateCache[filePath] || fs.readFileSync(filePath).toString();
+function getDocument(filePath: string, useCache?: boolean): string {
+	if(useCache)
+  		return templateCache[filePath] = templateCache[filePath] || fs.readFileSync(filePath).toString();
+	else
+		return fs.readFileSync(filePath).toString();
 }
