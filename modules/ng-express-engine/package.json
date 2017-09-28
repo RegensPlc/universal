@@ -1,5 +1,5 @@
 {
-  "name": "@nguniversal/express-engine",
+  "name": "@nguniversal/vmc-express-engine",
   "main": "index.js",
   "types": "index.d.ts",
   "version": "1.0.0-beta.0",
@@ -9,10 +9,6 @@
   "contributors": [
     "FrozenPandaz"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/angular/universal"
-  },
   "bugs": {
     "url": "https://github.com/angular/universal/issues"
   },
